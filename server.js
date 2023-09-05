@@ -107,7 +107,7 @@ const getMakeCredentialChallenge = (options) => {
 
             'rp': {
                 'name': 'github.io',
-                'id' : "yashzawar02.github.io"
+                // 'id' : "yashzawar02.github.io"
             },
 
             'user': {
