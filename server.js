@@ -122,7 +122,7 @@ const getMakeCredentialChallenge = (options) => {
             ],
 
             'authenticatorSelection' : {
-                'authenticatorAttachment': 'cross-platform'
+                'authenticatorAttachment': 'platform'
             },
 
             'transport' : ['ble', 'nfc', 'usb'],
