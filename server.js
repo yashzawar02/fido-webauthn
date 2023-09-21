@@ -101,7 +101,12 @@ const getMakeCredentialChallenge = (options) => {
 
         let user = db.getUser(session.username);
         session.challenge = base64url.encode(generateRandomBuffer(32));
+        let attachmentType = 'cross-platform';
 
+        if(window.orientation > 1){
+            attachmentType = 'platform'
+        }
+        
         let publicKey = {
             'challenge': session.challenge,
 
@@ -122,7 +127,7 @@ const getMakeCredentialChallenge = (options) => {
             ],
 
             'authenticatorSelection' : {
-                'authenticatorAttachment': 'platform'
+                'authenticatorAttachment': attachmentType
             },
 
             'timeout' : 60000,
