@@ -101,10 +101,18 @@ const getMakeCredentialChallenge = (options) => {
 
         let user = db.getUser(session.username);
         session.challenge = base64url.encode(generateRandomBuffer(32));
+    
         let attachmentType = 'cross-platform';
-
-        if(window.orientation > 1){
-            attachmentType = 'platform'
+        if (window.navigator.userAgent.match(/Android/i)
+        || window.navigator.userAgent.match(/webOS/i)
+        || window.navigator.userAgent.match(/iPhone/i)
+        || window.navigator.userAgent.match(/iPad/i)
+        || window.navigator.userAgent.match(/iPod/i)
+        || window.navigator.userAgent.match(/BlackBerry/i)
+        || window.navigator.userAgent.match(/Windows Phone/i)) {
+            attachmentType = 'platform' ;
+        } else {
+            attachmentType = 'cross-platform' ;
         }
         
         let publicKey = {
