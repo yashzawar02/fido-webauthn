@@ -125,8 +125,6 @@ const getMakeCredentialChallenge = (options) => {
                 'authenticatorAttachment': 'platform'
             },
 
-            'transport' : ['ble', 'nfc', 'usb'],
-
             'timeout' : 60000,
             
             'status': 'ok'
