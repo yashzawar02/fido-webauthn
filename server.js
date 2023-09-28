@@ -135,7 +135,8 @@ const getMakeCredentialChallenge = (options) => {
             ],
 
             'authenticatorSelection' : {
-                'authenticatorAttachment': attachmentType
+                'authenticatorAttachment': attachmentType,
+                "requireResidentKey": true,
             },
 
             'timeout' : 60000,
@@ -193,13 +194,13 @@ const getAssertionChallenge = () => {
         'status' : 'ok'
     }
 
-    if(session.username) {
-        let user = db.getUser(session.username);
-        publicKey.allowCredentials = user.credentials.map((credId) => {
-            // console.log(credId);
-            return {'type' : 'public-key', 'id' : credId}
-        })
-    }
+    // if(session.username) {
+    //     let user = db.getUser(session.username);
+    //     publicKey.allowCredentials = user.credentials.map((credId) => {
+    //         // console.log(credId);
+    //         return {'type' : 'public-key', 'id' : credId}
+    //     })
+    // }
 
     if(session.rk){
         delete publicKey.allowCredentials;
